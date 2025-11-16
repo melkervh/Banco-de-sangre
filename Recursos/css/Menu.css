@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f7fa;
+    padding: 15px;
+}
+
+
+.encabezado h2 {
+    margin: 0;
+    color: #0a1a2f;
+}
+
+.encabezado p {
+    margin: 5px 0 20px;
+    color: #555;
+}
+
+.accesos {
+    margin: 10px 0 25px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.accesos button {
+    padding: 8px 14px;
+    background: #00c8a5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.accesos button:hover {
+    background: #0a1a2f;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #00c8a5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin: 0;
+    color: #0a1a2f;
+}
+
+.numero {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00c8a5;
+    margin-top: 10px;
+}
+
+.grafica {
+    margin-top: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-top: 4px solid #0a1a2f;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    height: 260px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.alertas {
+    margin-top: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #ff6b6b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.alerta {
+    background: #ffe2e2;
+    padding: 10px;
+    border-left: 5px solid #ff6b6b;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+
+.footer {
+    margin-top: 45px;
+    background: #0a1a2f;      
+    color: white;
+    padding: 25px 20px;       
+    border-radius: 12px;
+    font-size: 15px;
+    text-align: left;          
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+

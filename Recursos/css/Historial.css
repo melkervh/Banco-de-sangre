@@ -1,0 +1,75 @@
+
+body {
+  background: #f8f9fa;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.title-main {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0A1A2F;
+  margin: 0;
+}
+
+
+.nav-tabs .nav-link {
+  color: #0A1A2F;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-tabs .nav-link.active {
+  background: transparent;
+  border-bottom: 3px solid #0A1A2F;
+  color: #0A1A2F;
+}
+
+
+.table-head {
+  background: #0A1A2F;
+  color: white;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+
+.badge {
+  font-weight: 600;
+}
+
+.btn-danger {
+  background: #B30000;
+  border: none;
+}
+
+.btn-success {
+  background: #1DB954;
+  border: none;
+}
+
+
+.footer {
+    margin-top: 45px;
+    background: #0a1a2f;      
+    color: white;
+    padding: 25px 20px;       
+    border-radius: 12px;
+    font-size: 15px;
+    text-align: left;        
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+  .title-main {
+    font-size: 22px;
+  }
+
+  #globalSearch {
+    width: 100% !important;
+    margin-top: 10px;
+  }
+}

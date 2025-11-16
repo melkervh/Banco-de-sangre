@@ -1,0 +1,66 @@
+
+.badge-noti {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #B30000;
+  color: white;
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 50%;
+}
+
+.notification-panel {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 99999;
+}
+
+.notification-panel.show {
+  display: block;
+  animation: fadeIn 0.18s ease-in-out;
+}
+
+.panel-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #0A1A2F;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-list li:last-child {
+  border-bottom: none;
+}
+
+.notification-list strong {
+  color: #0A1A2F;
+}
+
+.notification-list p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

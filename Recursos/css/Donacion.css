@@ -1,0 +1,62 @@
+
+footer {
+    background: #0A1A2F;
+    color: white;
+    padding: 20px;
+    text-align: left;      
+    position: fixed;        
+    bottom: 0;
+    left: 0;
+    width: 100%;             
+    border-radius: 10px 10px 0 0;
+    z-index: 999;
+}
+
+
+body {
+    padding-top: 80px; 
+}
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+.btn-aqua {
+    background-color: #00c8a5;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.btn-aqua:hover {
+    background-color: #0a1a2f;
+}
+
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .titulo-modulo {
+        font-size: 22px;
+    }
+
+    .btn-aqua {
+        width: 100%;
+        text-align: center;
+    }
+}

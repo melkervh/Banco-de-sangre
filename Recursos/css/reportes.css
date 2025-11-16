@@ -1,0 +1,62 @@
+body {
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+
+main {
+    margin-top: 80px !important;
+}
+
+.titulo {
+    font-weight: 700;
+    color: #0A1A2F;
+    margin-bottom: 25px;
+}
+
+.tabla-estilo thead {
+    background: #0A1A2F;
+    color: white;
+}
+
+.tabla-estilo th, .tabla-estilo td {
+    padding: 12px;
+}
+
+.estado {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.ok {
+    background-color: #28a745;
+    color: white;
+}
+
+.alerta {
+    background-color: #f2c94c;
+    color: #333;
+}
+.btn-generar {
+    background: #0A1A2F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.btn-generar:hover {
+    background: #081726;
+}
+footer {
+    background: #0A1A2F;
+    color: white;
+    padding: 20px;
+    text-align: left;       
+    position: fixed;         
+    bottom: 0;
+    left: 0;
+    width: 100%;             
+    border-radius: 10px 10px 0 0;
+    z-index: 999;
+}
