@@ -1,11 +1,14 @@
 body {
+
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f2f7fa;
     padding: 15px;
 }
 
-
+.encabezado{
+    padding-top: 5%;
+}
 .encabezado h2 {
     margin: 0;
     color: #0a1a2f;

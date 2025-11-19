@@ -1,22 +1,18 @@
-
-footer {
-    background: #0A1A2F;
-    color: white;
-    padding: 20px;
-    text-align: left;      
-    position: fixed;        
-    bottom: 0;
-    left: 0;
-    width: 100%;             
-    border-radius: 10px 10px 0 0;
-    z-index: 999;
-}
-
-
+/* Espaciado general */
 body {
-    padding-top: 80px; 
+    padding-top: 80px;
+    padding-bottom: 120px; /* espacio para que el footer no tape contenido */
+    font-family: 'Segoe UI', sans-serif;
 }
 
+/* Encabezado de módulo */
+.titulo-modulo {
+    color: #0a1a2f;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+/* Botones superiores */
 .top-actions {
     display: flex;
     justify-content: space-between;
@@ -25,7 +21,7 @@ body {
     gap: 12px;
 }
 
-
+/* Botón principal */
 .btn-aqua {
     background-color: #00c8a5;
     color: white;
@@ -33,22 +29,62 @@ body {
     font-size: 14px;
     border-radius: 8px;
     white-space: nowrap;
+    border: none;
 }
 
 .btn-aqua:hover {
     background-color: #0a1a2f;
 }
 
+/* Botón eliminar */
+.btn-eliminar {
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
 
+.btn-eliminar:hover {
+    background-color: #d9534f;
+}
+
+/* Tabla */
 .table-responsive {
     border-radius: 10px;
     overflow: hidden;
 }
 
+.table-azul {
+    background-color: #0a1a2f !important;
+    color: white;
+}
 
+/* Footer fijo con espacio reservado */
+footer {
+    background: #0A1A2F;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Card del formulario */
+.borde-azul {
+    border: 2px solid #0a1a2f;
+    border-radius: 10px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     body {
         padding-top: 100px;
+        padding-bottom: 140px;
     }
 
     .titulo-modulo {

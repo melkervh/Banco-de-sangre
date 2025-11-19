@@ -1,107 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donaciones</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donaciones</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Tus estilos -->
-    <link rel="stylesheet" href="../Recursos/Css/Donacion.css">
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="../Recursos/Css/Donacion.css" />
 </head>
 
 <body>
-    <header class="mb-4">
-        <div id="navbar-container"></div>
-    </header>
-    <main class="container">
-        <div class="top-actions mb-3">
-            <h2 class="titulo-modulo mb-2">Donaciones</h2>
+  <!-- Header -->
+  <header class="mb-4">
+    <div id="navbar-container"></div>
+  </header>
 
-            <button class="btn btn-aqua" data-bs-toggle="collapse" data-bs-target="#formDonacion">
-                Registrar nueva donación
-            </button>
-        </div>
-        <div id="formDonacion" class="collapse mb-4">
-            <div class="card p-4 shadow-sm borde-azul">
-                <h5 class="mb-3 fw-bold">Registrar donación</h5>
+  <!-- Contenido principal -->
+  <main class="container">
+    <div class="top-actions mb-3">
+      <h2 class="titulo-modulo mb-2">Donaciones</h2>
+      <button class="btn btn-aqua" data-bs-toggle="collapse" data-bs-target="#formDonacionWrap">
+        Registrar nueva donación
+      </button>
+    </div>
 
-                <form>
-                    <div class="row g-3">
+    <!-- Formulario -->
+    <div id="formDonacionWrap" class="collapse mb-4">
+      <div class="card p-4 shadow-sm borde-azul">
+        <h5 class="mb-3 fw-bold">Registrar donación</h5>
 
-                        <div class="col-md-4">
-                            <label class="form-label">Nombre del donante</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label">Tipo de sangre</label>
-                            <select class="form-control">
-                                <option>O+</option><option>O-</option>
-                                <option>A+</option><option>A-</option>
-                                <option>B+</option><option>B-</option>
-                                <option>AB+</option><option>AB-</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label">Fecha de donación</label>
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Notas</label>
-                            <textarea class="form-control" rows="2"></textarea>
-                        </div>
-
-                        <div class="col-12">
-                            <button class="btn btn-aqua mt-2">Guardar donación</button>
-                        </div>
-
-                    </div>
-                </form>
+        <form id="formDonacion">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label" for="donante">Nombre del donante</label>
+              <input id="donante" type="text" class="form-control" />
             </div>
-        </div>
-        <h4 class="mb-3 fw-bold">Historial de donaciones</h4>
 
-        <div class="table-responsive shadow-sm rounded">
-            <table class="table align-middle">
-                <thead class="table-azul">
-                    <tr>
-                        <th>#</th>
-                        <th>Donante</th>
-                        <th>Tipo de sangre</th>
-                        <th>Fecha</th>
-                        <th>Notas</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
+            <div class="col-md-4">
+              <label class="form-label" for="tipo">Tipo de sangre</label>
+              <select id="tipo" class="form-control">
+                <option>O+</option><option>O-</option>
+                <option>A+</option><option>A-</option>
+                <option>B+</option><option>B-</option>
+                <option>AB+</option><option>AB-</option>
+              </select>
+            </div>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Juan Pérez</td>
-                        <td>O+</td>
-                        <td>2025-01-12</td>
-                        <td>Ninguna</td>
-                        <td>
-                            <button class="btn btn-sm btn-aqua">Editar</button>
-                            <button class="btn btn-sm btn-eliminar">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="col-md-4">
+              <label class="form-label" for="fecha">Fecha de donación</label>
+              <input id="fecha" type="date" class="form-control" />
+            </div>
 
-    </main>
-    <footer class="footer mt-5">
-        <p>© 2025 Banco de Sangre</p>
-    </footer>
-    <script src="../Recursos/js/Nav.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="col-md-6">
+              <label class="form-label" for="campaña">Campaña asignada</label>
+              <select id="campaña" class="form-select">
+                <option value="">— Sin campaña —</option>
+              </select>
+            </div>
 
+            <div class="col-md-6">
+              <label class="form-label" for="cantidad">Cantidad de bolsas</label>
+              <input id="cantidad" type="number" min="1" class="form-control" />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" for="notas">Notas</label>
+              <textarea id="notas" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-aqua mt-2" type="submit">Guardar donación</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <h4 class="mb-3 fw-bold">Historial de donaciones</h4>
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table align-middle">
+        <thead class="table-azul">
+          <tr>
+            <th>#</th>
+            <th>Donante</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Campaña</th>
+            <th>Cantidad</th>
+            <th>Notas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará dinámicamente con JS -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer mt-5">
+    <p>© 2025 Banco de Sangre</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../Recursos/js/Nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../Controladores/Alertas.js"></script>
+  <script src="../Controladores/Donacion.js"></script>
 </body>
 </html>
+
+
