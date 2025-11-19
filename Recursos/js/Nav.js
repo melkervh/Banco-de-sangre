@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // --- Validar sesión ---
+  const usuario = JSON.parse(localStorage.getItem("usuarioLogeado"));
+  if (!usuario) {
+    Swal.fire("Acceso denegado", "Debes iniciar sesión primero", "warning").then(() => {
+      window.location.href = "Index.html";
+    });
+    return; // detener ejecución si no hay sesión
+  }
+
   // --- Cargar estilos ---
   const cssNav = document.createElement("link");
   cssNav.rel = "stylesheet";
@@ -19,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <button class="btn btn-link text-dark position-relative me-2" id="btnNoti">
           <i class="bi bi-bell-fill fs-4"></i>
           <span class="badge-noti" id="badgeNoti">0</span>
+        </button>
+        <button class="btn btn-link text-dark ms-2" id="btnLogout">
+          <i class="bi bi-box-arrow-right"></i> Salir
         </button>
         <button class="navbar-toggler" type="button"
           data-bs-toggle="offcanvas"
@@ -59,16 +71,37 @@ document.addEventListener('DOMContentLoaded', function () {
   const notiPanel = document.getElementById("notiPanel");
   const listaAlertas = document.getElementById("listaAlertas");
   const badgeNoti = document.getElementById("badgeNoti");
+  const btnLogout = document.getElementById("btnLogout");
+
+  // --- Botón cerrar sesión ---
+  if (btnLogout) {
+    btnLogout.addEventListener("click", () => {
+      Swal.fire({
+        title: "¿Cerrar sesión?",
+        text: "Se cerrará tu sesión actual",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#00c8a5",
+        cancelButtonColor: "#d9534f",
+        confirmButtonText: "Sí, salir",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("usuarioLogeado");
+          Swal.fire("Sesión cerrada", "Has salido del sistema", "success").then(() => {
+            window.location.href = "Index.html";
+          });
+        }
+      });
+    });
+  }
 
   // --- Mostrar/ocultar panel ---
   btnNoti.addEventListener("click", () => {
     notiPanel.classList.toggle("show");
 
     if (notiPanel.classList.contains("show")) {
-      // Reiniciar contador al abrir
       badgeNoti.textContent = "0";
-
-      // Guardar IDs de alertas vistas
       const vistas = Array.from(listaAlertas.querySelectorAll("li"))
         .map(li => li.dataset.id);
       localStorage.setItem("alertasVistas", JSON.stringify(vistas));
@@ -89,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const alertasVistas = JSON.parse(localStorage.getItem("alertasVistas")) || [];
     let alertas = [];
 
-    // Inventario general bajo
     if (donaciones.length < 5) {
       alertas.push({
         id: "inv-general",
@@ -98,17 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Inventario crítico en O-
-    const bolsasOM = donaciones.filter(d => d.tipo === "O-").length;
-    if (bolsasOM < 3) {
-      alertas.push({
-        id: "inv-critico-o-",
-        titulo: "Inventario crítico O-",
-        detalle: `Solo hay ${bolsasOM} bolsas de tipo O-`
-      });
-    }
-
-    // Donaciones sin campaña asignada
     const sinCampaña = donaciones.filter(d => !d.campaña || d.campaña === "");
     if (sinCampaña.length > 0) {
       alertas.push({
@@ -118,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Solicitudes urgentes
     solicitudes.forEach((s, i) => {
       if (s.urgencia === "Alta") {
         alertas.push({
@@ -129,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Solicitudes rechazadas
     solicitudes.filter(s => s.estado === "Rechazada")
       .forEach((s, i) => {
         alertas.push({
@@ -139,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-    // Campañas activas sin bolsas
     campañas.filter(c => c.estado === "Activa" && c.bolsas === 0)
       .forEach((c, i) => {
         alertas.push({
@@ -149,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-    // Campañas finalizadas
     campañas.filter(c => c.estado === "Finalizada")
       .forEach((c, i) => {
         alertas.push({
@@ -159,38 +176,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-    // Renderizar alertas
     listaAlertas.innerHTML = "";
     let nuevas = 0;
 
     alertas.forEach(a => {
-      // Si ya fue vista, no la mostramos
       if (alertasVistas.includes(a.id)) return;
-
       const li = document.createElement("li");
       li.dataset.id = a.id;
       li.innerHTML = `<strong>${a.titulo}</strong><p>${a.detalle}</p>`;
       listaAlertas.appendChild(li);
-
       nuevas++;
     });
 
-    // Actualizar badge solo si el panel está cerrado
     if (!notiPanel.classList.contains("show")) {
       badgeNoti.textContent = nuevas;
     }
   }
 
-  // --- Generar alertas al cargar ---
   generarAlertas();
-
-  // --- Escuchar cambios en otras pestañas ---
   window.addEventListener("storage", generarAlertas);
-
-  // --- Escuchar cambios en el mismo tab ---
   document.addEventListener("datosActualizados", generarAlertas);
-
-  // --- Exponer función global ---
   window.generarAlertas = generarAlertas;
 });
-
